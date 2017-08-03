@@ -1,0 +1,75 @@
+@base <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+
+<102063#Instance>
+    bf:illustrativeContent <http://id.loc.gov/vocabulary/millus/ill> ;
+    bf:instanceOf <102063#Work> ;
+    bf:issuance <http://id.loc.gov/vocabulary/issuance/mono> ;
+    bf:provisionActivity [
+        bf:date "1957"^^<http://id.loc.gov/datatypes/edtf> ;
+        bf:place <http://id.loc.gov/vocabulary/countries/nyu> ;
+        a bf:ProvisionActivity, bf:Publication
+    ] ;
+    bf:title [
+        bflc:titleSortKey "Clinical cardiopulmonary physiology." ;
+        bf:mainTitle "Clinical cardiopulmonary physiology" ;
+        a bf:Title ;
+        rdfs:label "Clinical cardiopulmonary physiology."
+    ] ;
+    a bf:Instance ;
+    rdfs:label "Clinical cardiopulmonary physiology." .
+
+<102063#Work>
+    bf:adminMetadata [
+        bflc:encodingLevel [
+            bf:code "1" ;
+            a bflc:EncodingLevel
+        ] ;
+        bf:creationDate "1986-05-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        bf:descriptionConventions [
+            bf:code "unknown" ;
+            a bf:DescriptionConventions
+        ] ;
+        bf:identifiedBy [
+            a bf:Local ;
+            rdf:value "102063"
+        ] ;
+        bf:status [
+            bf:code "c" ;
+            a bf:Status
+        ] ;
+        a bf:AdminMetadata
+    ] ;
+    bf:genreForm <http://id.loc.gov/vocabulary/marcgt/bib> ;
+    bf:hasInstance <102063#Instance> ;
+    bf:language <http://id.loc.gov/vocabulary/languages/eng> ;
+    bf:title [
+        bflc:titleSortKey "Clinical cardiopulmonary physiology." ;
+        bf:mainTitle "Clinical cardiopulmonary physiology" ;
+        a bf:Title ;
+        rdfs:label "Clinical cardiopulmonary physiology."
+    ] ;
+    a bf:Text, bf:Work ;
+    rdfs:label "Clinical cardiopulmonary physiology." .
+
+<http://id.loc.gov/vocabulary/countries/nyu>
+    a bf:Place .
+
+<http://id.loc.gov/vocabulary/issuance/mono>
+    a bf:Issuance .
+
+<http://id.loc.gov/vocabulary/languages/eng>
+    a bf:Language .
+
+<http://id.loc.gov/vocabulary/marcgt/bib>
+    a bf:GenreForm ;
+    rdfs:label "bibliography" .
+
+<http://id.loc.gov/vocabulary/millus/ill>
+    a bf:Illustration ;
+    rdfs:label "illustrations" .
+

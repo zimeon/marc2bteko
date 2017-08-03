@@ -1,0 +1,7 @@
+*~
+# Workspace
+/tmp/102*
+target/
+# Other repos that we might check out locally
+/bib2lod/
+/marc2bibframe/

@@ -1,0 +1,58 @@
+@base <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bib: <http://bibliotek-o.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+
+<n632d49223ac1c866>
+    vivo:rank "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+    a bib:MainTitleElement ;
+    rdf:value "Clinical cardiopulmonary physiology." .
+
+<n70228b3115f5f1c7>
+    bib:hasActivity <n81e2e02579f9d0a6> ;
+    bib:hasPreferredTitle <nfdd05d51e0c292d5> ;
+    bf:adminMetadata <nddf0492eedaf8601> ;
+    bf:hasItem <nc3f7171dd6ee5d62> ;
+    bf:instanceOf <nbdadbf9d6508c9b6> ;
+    a bf:Instance .
+
+<n72dd7d1890cdadc>
+    vivo:rank "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+    a bib:MainTitleElement ;
+    rdf:value "Clinical cardiopulmonary physiology." .
+
+<n81e2e02579f9d0a6>
+    bib:atLocation <http://id.loc.gov/vocabulary/countries/nyu> ;
+    dct:date "1957" ;
+    a bib:PublisherActivity ;
+    rdfs:label "Publishing" .
+
+<nbdadbf9d6508c9b6>
+    bib:hasPreferredTitle <ncd30fa171d87fe12> ;
+    dct:language <http://id.loc.gov/vocabulary/languages/eng> ;
+    a bf:Text, bf:Work .
+
+<nc3f7171dd6ee5d62>
+    a bf:Item .
+
+<ncd30fa171d87fe12>
+    dct:hasPart <n632d49223ac1c866> ;
+    a bf:Title ;
+    rdf:value "Clinical cardiopulmonary physiology." .
+
+<nce8f8a2104820cf>
+    a bf:Local ;
+    rdf:value "102063" .
+
+<nddf0492eedaf8601>
+    bf:identifiedBy <nce8f8a2104820cf> ;
+    a bf:AdminMetadata .
+
+<nfdd05d51e0c292d5>
+    dct:hasPart <n72dd7d1890cdadc> ;
+    a bf:Title ;
+    rdf:value "Clinical cardiopulmonary physiology." .
+
