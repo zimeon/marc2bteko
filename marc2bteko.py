@@ -214,14 +214,17 @@ class Marc2Bteko(object):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(add_help=True)
+    parser = argparse.ArgumentParser(description="MARC to bibliotek-o Converter Harness.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--xsl', action='store',
                         default='vendor/marc2bibframe2-xsl/marc2bibframe2.xsl',
-                        help='marc2bibframe XSL (default %default)')
+                        help='marc2bibframe XSL')
     parser.add_argument('--verbose', '-v', action='store_true',
-                        help="be verbose.")
+                        help="be verbose")
     parser.add_argument('--debug', '-d', action='store_true',
-                        help="be very verbose.")
+                        help="be very verbose")
+    parser.add_argument('filename', nargs=argparse.REMAINDER,
+                        help="input MARCXML filename(s)")
     (opts, args) = parser.parse_known_args()
     logging.basicConfig(level=logging.DEBUG if opts.debug else
                         (logging.INFO if opts.verbose else logging.WARN))
