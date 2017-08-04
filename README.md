@@ -1,8 +1,28 @@
 # Experiments/thoughts MARC to bibliotek-o conversion
 
-What can we do as a stop-gap to leverage the LC [`marc2bibframe` XSL](https://github.com/lcnetdev/marc2bibframe2) which does MARCXML to BIBFRAME2 RDF/XML conversion with [`bib2lod`](https://github.com/ld4l-labs/bib2lod) to handle fields that are differently converted according to the [bibliotek-o](https://bibliotek-o/) ontology?
+What can we do as a stop-gap to leverage the LC [`marc2bibframe` XSLT](https://github.com/lcnetdev/marc2bibframe2) which does MARCXML to BIBFRAME2 RDF/XML conversion with [`bib2lod`](https://github.com/ld4l-labs/bib2lod) to handle fields that are differently converted according to the [bibliotek-o](https://bibliotek-o/) ontology?
 
+## marc2bteko.py conversion harness
 
+This is a Python program to use both the LC [`marc2bibframe` XSLT](https://github.com/lcnetdev/marc2bibframe2) and [`bib2lod`](https://github.com/ld4l-labs/bib2lod) for appropriate portions of a record.
+
+![marc2bteko schematic](marc2bteko_schematic.png)
+
+  * **MARC split** - splits the input MARC record into portions for each converter, some fields are duplicated in both as they are necessary for the minimal record structure
+  * **strip `bflc:` portions** -- the `marc2bibframe` XSLT includes a number of LC-specific additions that are not part of the bibliotek-o output desired, these are stripped
+  * **URI alignment** - reconcile the URIs of the primary `bf:Work` and `bf:Instance` entities in the output RDF by adjusting those in the `marc2bibframe` output to match those in the `bib2lod` output
+  * **graph merge** - easy in RDF, simply combine the sets of triples in order to write out a single RDF document for the bibliotek-o corresponding with the original MARC XML record
+  
+### Use
+
+```
+> python marc2bteko.py -v testdata/darwin_origin.xml 
+INFO:root:Converting testdata/darwin_origin.xml -> darwin_origin.ttl...
+INFO:root:Have 176 triples from BF conversion
+INFO:root:Have 41 triples from bib2lod conversion
+INFO:root:Writing 213 triples to darwin_origin.ttl
+INFO:root:Done.
+```
 
 ## Setup
 
