@@ -12,7 +12,7 @@ This is a Python program to use both the LC [`marc2bibframe` XSLT](https://githu
   * **strip `bflc:` portions** -- the `marc2bibframe` XSLT includes a number of LC-specific additions that are not part of the bibliotek-o output desired, these are stripped
   * **URI alignment** - reconcile the URIs of the primary `bf:Work` and `bf:Instance` entities in the output RDF by adjusting those in the `marc2bibframe` output to match those in the `bib2lod` output
   * **graph merge** - easy in RDF, simply combine the sets of triples in order to write out a single RDF document for the bibliotek-o corresponding with the original MARC XML record
-  
+
 ### Use
 
 ```
@@ -26,7 +26,13 @@ INFO:root:Done.
 
 ## Setup
 
-The `vendor` directory include a JAR of [`bib2lod`](https://github.com/ld4l-labs/bib2lod) which does MARCXML to bibliotek-o conversion.
+The `vendor` directory include a JAR of [`bib2lod`](https://github.com/ld4l-labs/bib2lod) which does MARCXML to bibliotek-o conversion. This relies upon Java 8 ([AKA 1.8.x](https://en.wikipedia.org/wiki/Java_version_history)):
+
+```
+> java -version
+java version "1.8.0_112"
+...
+```
 
 The `vendor` directory includes LC [`marc2bibframe` XSL](https://github.com/lcnetdev/marc2bibframe2) which does MARCXML to BIBFRAME RDF/XML conversion. These XSLs can be used with `xsltproc` which for me reports:
 
@@ -48,7 +54,7 @@ For RDF format conversion I use `rapper` (so I never have to see any RDF/XML!):
 ### Converting MARC -> BIBFRAME
 
 ```
-xsltproc vendor/marc2bibframe2-xsl/marc2bibframe2.xsl vendor/bib2lod/102063.min.xml | rapper -o turtle - http://example.org/ > tmp/102063-bf.ttl
+> xsltproc vendor/marc2bibframe2-xsl/marc2bibframe2.xsl vendor/bib2lod/102063.min.xml | rapper -o turtle - http://example.org/ > tmp/102063-bf.ttl
 rapper: Parsing file <stdin> with parser rdfxml and base URI http://example.org/
 rapper: Serializing with serializer turtle and base URI http://example.org/
 rapper: Parsing returned 48 triples
