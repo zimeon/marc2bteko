@@ -229,7 +229,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG if opts.debug else
                         (logging.INFO if opts.verbose else logging.WARN))
     marc2bteko = Marc2Bteko(xsl=opts.xsl)
-    for infilename in args:
+    for infilename in opts.filename:
         (root, ext) = os.path.splitext(os.path.split(infilename)[1])
         outfilename = root + ('' if ext.lower() == '.xml' else ext) + '.ttl'
         logging.info("Converting %s -> %s..." % (infilename, outfilename))
